@@ -1,0 +1,25 @@
+<div *ngIf="_card">
+    <div class="wrapper">
+        <img src="{{_card.card_images[0].image_url}}" class="display-image" />
+        <div class="close-button" (click)="closeModal()">X</div>
+        <div class="data-wrapper">
+            <div class="data-row">
+                <h1 class="heading-name">{{_card.name}}</h1>
+                <div class="card-level" *ngIf="_card.type.indexOf('Monster') !== -1"><img src="assets/images/level.png" /> {{_card.level}}</div>
+            </div>
+            <div class="data-row">
+                <div><img src="{{typePath}}"  style="height: 25px; padding-right: 5px;" /> {{_card.type}} / ID: {{_card.id}}</div>
+                <div><img src="{{attributePath}}" alt="{{_card.attribute}}" style="width: 20px; height: 20px; margin: 3px;" *ngIf="attributePath"> <img src="{{racePath}}" alt="{{_card.race}}"  style="width: 20px; height: 20px; margin: 3px;"></div>
+            </div>
+            <div class="data-row" *ngIf="_card.type.indexOf('Monster') !== -1">
+                ATK/{{_card.atk}} DEF/{{_card.def}}
+            </div>
+            <div class="data-row">
+                {{_card.desc}}
+            </div>
+            <div class="data-row" *ngIf="_card.archetype">
+                Archetype: {{_card.archetype}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.tile-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-bar {
+    display: flex;
+    align-self: baseline;
+    padding: 10px;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    padding-right: 5px;
+    border-right: 2px solid #334953;
+    margin-right: 5px;
+  }
+  nav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    margin-right: 8px;
+    font-size: 1.25rem;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+  }
+  nav a:visited, a:link {
+    color: #334953;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: #cfd8dc;
+  }
+  nav a.active {
+    color: #039be5;
+  }

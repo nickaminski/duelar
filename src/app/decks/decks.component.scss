@@ -1,0 +1,78 @@
+.component-header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.component-header button {
+    margin: 0px 20px 0px 20px;
+}
+
+.component-header h1 {
+    margin: 0;
+}
+
+.component-body {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.deck-wrapper {
+    display: flex;
+    flex-flow: column;
+    margin-top: 20px;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.deck-button {
+    width: 260px;
+    height: 200px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.selected-deck {
+    box-shadow: 0 0 50px 10px green;
+}
+
+.add-deck{
+    display: flex;
+    flex-flow: column;
+    width: 260px;
+    height: 200px;
+    background-color: #334953;
+    color: white;
+    border-radius: 10px;
+    font-size: 120px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.add-deck a {
+    text-decoration: none;
+}
+
+.add-deck:hover {
+    background-color: #3e4f57;
+}
+
+.deck-label {
+    width: 260px;
+    border-radius: 25px;
+    background-color: black;
+    font-size: 26px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    margin-top: -7px;
+}
+
+.deck-label:hover {
+    border: 2px solid white;
+}

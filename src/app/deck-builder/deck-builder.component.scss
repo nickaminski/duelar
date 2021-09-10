@@ -1,0 +1,247 @@
+.component-wrapper {
+    display: flex;
+    flex-flow: row;
+    height: calc(100vh - 50px);
+}
+
+.left-panel {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    background-color: #303030;
+}
+
+.left-header {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 5px;
+    height: 60px;
+}
+
+.filter-input {
+    display: inline-flex; 
+    align-items: center;
+    color: white;
+    border-color: #4d4d4d;
+    background-color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.filter-input input {
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin-left: 5px;
+}
+
+.clear-x {
+    color: white;
+    font-weight: bold;
+    position: relative;
+    background-color: #303030;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    text-align: center;
+    font-size: 24px;
+    margin-left: 5px;;
+}
+
+.clear-x:hover {
+    background-color: #4d4d4d;
+}
+
+.left-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    height: calc(100vh - 160px);
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.right-panel {
+    display: flex;
+    flex-flow: column;
+    max-width: 400px;
+    min-width: 350px;
+    flex-grow: 1;
+    background-color: #303030;
+    box-shadow: -2px 0 2em gray;
+}
+
+.right-header {
+    height: 60px;
+    margin: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: column;
+}
+
+.card-types {
+    display: flex;
+}
+
+.card-types div {
+    display: flex;
+    color: white;
+    margin: 0;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.deck-name-input {
+    margin-bottom: 5px; 
+    font-size: 20px;
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    color: white;
+}
+
+.right-content {
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    overflow-y: auto;
+}
+
+.right-footer {
+    height: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.done-button {
+    width: 250px;
+    height: 60px;
+    font-size: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.card {
+    background-color: transparent;
+    width: 177px;
+    margin: 20px;
+    margin-top: 0px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+}
+
+.inspect-card img:hover {
+    cursor: zoom-in;
+}
+
+.collected-amount div {
+    margin: 5px;
+    user-select: none;
+}
+
+.collected-amount {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    font-size: 30px;
+    text-shadow: 0px 0px 3px black;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.collected-amount-available {
+    text-shadow: 0px 0px 8px yellow;
+}
+
+.collected-amount-selected {
+    text-shadow: 0px 0px 8px yellow;
+    color: yellowgreen;
+}
+
+.deck-card-row {
+    display: flex;
+    background-color: black;
+    border-radius: 20px;
+    align-items: center;
+    margin: 0px 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.deck-card-row:hover {
+    border-color: white;
+}
+
+.deck-card-row div {
+    font-size: 24px;
+}
+
+.card-count {
+    color: gray;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.card-name {
+    color: white;
+    margin-left: 10px;
+    user-select: none;
+}
+
+::placeholder {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+::ms-input-placeholder {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+button {
+    font-size: 20px;
+    margin: 0 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: gray;
+    padding: 6px;
+}
+
+button:hover {
+    border-color: white;
+}
+
+.card-type-filters {
+    display: flex;
+    margin: 0 10px;
+    margin-left: 30px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.card-type-filters div {
+    margin:0 10px;
+    cursor: pointer;
+}
+
+.active {
+    border: 2px solid lightgreen !important;
+}
+
+.inactive {
+    border: 2px solid gray;
+}

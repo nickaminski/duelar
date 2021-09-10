@@ -1,0 +1,8 @@
+<div class="card-wrapper">
+    <div *ngFor="let card of flipCards" class="flip-card" (click)="onClickCard(card.id)">
+        <img src="{{card.card_images[0].image_url_small}}" style="width: 177px; height: 254px; padding: 10px; cursor: pointer;" />
+        <div *ngIf="card.getRarityString(set.set_code)">{{card.getRarityString(set.set_code)}}</div>
+    </div>
+</div>
+<button [disabled]="flipped" (click)="doFlip()">Flip Cards</button>
+<button [disabled]="!flipped || completed" (click)="resetCards()">Open Pack {{currentPack}}/{{maxPacks}}</button>

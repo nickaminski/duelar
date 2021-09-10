@@ -1,0 +1,42 @@
+<div class="component-wrapper">
+    <div class="left-panel">
+        <div class="left-header">
+            <div class="filter-bar">
+                <div class="filter-input">
+                    <input [(ngModel)]="filterText" placeholder="Search..." (input)="onFilterChange()" />
+                    <div class="clear-x" (click)="clearFilterText()">x</div>
+                </div>
+                <div class="card-type-filters">
+                    <div (click)="showMonster=!showMonster; onFilterChange()">
+                        <img src="assets/images/Normal Monster.jpg" class="inactive" style="width: 16px;" [class.active]="showMonster" />
+                    </div>
+                    <div (click)="showSpell=!showSpell; onFilterChange()">
+                        <img src="assets/images/Spell Card.jpg" class="inactive" style="width: 16px;" [class.active]="showSpell" />
+                    </div>
+                    <div (click)="showTrap=!showTrap; onFilterChange()">
+                        <img src="assets/images/Trap Card.jpg" class="inactive" style="width: 16px;" [class.active]="showTrap" />
+                    </div>
+                    <div (click)="showExtra=!showExtra; onFilterChange()">
+                        <img src="assets/images/Fusion Monster.jpg" class="inactive" style="width: 16px;" [class.active]="showExtra" />
+                    </div>
+                </div>
+            </div>
+            <div><button class="delete-button" (click)="nukeCollection()">Delete Colleciton</button></div>
+        </div>
+        <div class="left-content">
+            <div *ngIf="collection" class="cards-wrapper">
+                <div *ngFor="let card of filteredCollection" class="card" id="{{card.id}}" (click)="onClickCard(card.id)" >
+                    <div class="collected-amount">
+                        <div [class.collected-amount-available]="countMap[card.id] >= 1">*</div>
+                        <div [class.collected-amount-available]="countMap[card.id] >= 2">*</div>
+                        <div [class.collected-amount-available]="countMap[card.id] >= 3">*</div>
+                    </div>
+                    <img style="width: inherit;" src="{{card.card_images[0].image_url_small}}" />
+                </div>
+            </div>
+            <div *ngIf="!collection || collection.length == 0" style="text-align: center; color: gray;">
+                Draft some packs you fuck
+            </div>
+        </div>
+    </div>
+</div>

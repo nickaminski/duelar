@@ -1,0 +1,20 @@
+.card-wrapper {
+    text-align: center;
+    min-height: 628px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 177px;
+    height: 254px;
+    display: inline-block;
+    margin: 20px;
+    margin-bottom: 35px;
+    box-sizing: border-box;
+}
+
+button {
+    margin: 6px;
+}

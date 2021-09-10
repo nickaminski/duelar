@@ -1,0 +1,16 @@
+<div class="select-wrapper">
+    <label>Year:</label>
+    <div class="select">
+        <select [(ngModel)]="maxYear" (change)="getCardSets()">
+            <option *ngFor="let year of years" [value]="year">{{year}}</option>
+        </select>
+        <span class="focus"></span>
+    </div>
+</div>
+<div class="tile-wrapper" *ngIf="cardSets && cardSets.length > 0">
+    <div *ngFor="let set of cardSets">
+        <div *ngIf="set.setFilter(maxYear)">
+            <app-card-set-tile [cardSet]="set"></app-card-set-tile>
+        </div>
+    </div>
+</div>
