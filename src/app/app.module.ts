@@ -17,28 +17,27 @@ import { DecksComponent } from './decks/decks.component';
 import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardSetTileComponent,
-    ViewSetComponent,
-    SetDashboardComponent,
-    PageNotFoundComponent,
-    PackOpeningComponent,
-    SealedDraftComponent,
-    ViewCardComponent,
-    ViewCardModalComponent,
-    DeckBuilderComponent,
-    DecksComponent,
-    CollectionComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  entryComponents: [ViewCardModalComponent],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CardSetTileComponent,
+        ViewSetComponent,
+        SetDashboardComponent,
+        PageNotFoundComponent,
+        PackOpeningComponent,
+        SealedDraftComponent,
+        ViewCardComponent,
+        ViewCardModalComponent,
+        DeckBuilderComponent,
+        DecksComponent,
+        CollectionComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
