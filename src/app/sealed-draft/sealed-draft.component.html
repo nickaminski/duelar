@@ -9,15 +9,18 @@
     </div>
     <div class="select-wrapper" style="margin-left: 8px;">
         <div class="select" style="max-width: unset;">
-            <select [(ngModel)]="selectedSet">
+            <select [(ngModel)]="selectedSet" (change)="onSetChange()">
                 <option *ngFor="let set of filteredSets" [ngValue]="set">{{set.set_name}}</option>
             </select>
             <span class="focus"></span>
         </div>
     </div>
-    <button (click)="startDraft()" *ngIf="!draftedCards" [disabled]="drafting">Start Draft</button>
+    <button (click)="startDraft()" *ngIf="!draftedCards" [disabled]="drafting || emptyCardSet">Start Draft</button>
     <button *ngIf="draftedCards" (click)="discardDraft()">Discard Draft</button>
     <button *ngIf="draftedCards" (click)="saveDraft()">Save and Continue</button>
+</div>
+<div *ngIf="emptyCardSet">
+    No cards found in this set.
 </div>
 <div *ngIf="drafting" class="pack-wrapper">
     <app-pack-opening [set]="selectedSet" [possibleCards]="cards" (onDraftCompleted)="completeDraft($event)"></app-pack-opening>

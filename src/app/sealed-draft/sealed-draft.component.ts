@@ -16,6 +16,7 @@ export class SealedDraftComponent implements OnInit {
   selectedSet: CardSet;
   drafting: boolean;
   cards: Card[];
+  emptyCardSet: boolean;
 
   draftedCards: Card[];
 
@@ -39,7 +40,12 @@ export class SealedDraftComponent implements OnInit {
 
     this.cardService.getAllCardsInSet(this.selectedSet.set_name).subscribe(response => {
       this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.card_sets, x.card_images, x.card_prices));
-      this.drafting = true;
+      if (this.cards.length == 0) {
+        this.emptyCardSet = true;
+      } else {
+        this.emptyCardSet = false;
+        this.drafting = true;
+      }
     });
   }
 
@@ -66,6 +72,7 @@ export class SealedDraftComponent implements OnInit {
     this.cardService.getCardSets(`${this.maxYear}`).subscribe(response => {
       this.cardSets = response.map(x => new CardSet(x.set_name, x.set_code, x.num_of_cards, x.tcg_date));
       this.filterSets();
+      this.emptyCardSet = false;
     });
   }
 
@@ -79,5 +86,9 @@ export class SealedDraftComponent implements OnInit {
       this.selectedSet = this.filteredSets[0];
     else
       this.selectedSet = undefined;
+  }
+
+  onSetChange() {
+    this.emptyCardSet = false;
   }
 }
