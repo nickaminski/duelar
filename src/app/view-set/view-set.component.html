@@ -13,8 +13,8 @@
     </div>    
 </div>
 <div *ngIf="cards" class="cards-wrapper">
-    <div *ngFor="let card of cards" class="card" id="{{card.id}}" (click)="onClickCard(card.id)">
-        <img src="{{card.card_images[0].image_url_small}}"/>
+    <div *ngFor="let card of cards" class="card" id="{{card.id}}" (click)="onClickCard(card.name)">
+        <img src="{{images_url}}/{{card.card_images[0].image_url_small}}"/>
         <div>{{card.name}}</div>
         <div>{{card.getRarityString(currentSet.set_code)}}</div>
     </div>

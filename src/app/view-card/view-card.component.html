@@ -1,6 +1,6 @@
 <div *ngIf="_card">
     <div class="wrapper">
-        <img src="{{_card.card_images[0].image_url}}" class="display-image" />
+        <img src="{{images_url}}/{{_card.card_images[currentImage].image_url}}" class="display-image" (click)="nextImage()" />
         <div class="close-button" (click)="closeModal()">X</div>
         <div class="data-wrapper">
             <div class="data-row">

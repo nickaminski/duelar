@@ -4,6 +4,7 @@ import { CardService, Card, CardSet } from '../services/card.service';
 import { CookieService } from '../services/cookie.service';
 import { ModalService } from '../services/modal.service';
 import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-modal.component';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-view-set',
@@ -15,8 +16,11 @@ export class ViewSetComponent implements OnInit {
   currentSet: CardSet;
   sort: string;
   cards: Card[];
+  images_url: string;
 
-  constructor(private route: ActivatedRoute, private cardService: CardService, private cookieService: CookieService, private modalService: ModalService) { }
+  constructor(private route: ActivatedRoute, private cardService: CardService, private cookieService: CookieService, private modalService: ModalService) {
+    this.images_url = images_url;
+  }
 
   ngOnInit(): void {
     this.currentSet = JSON.parse(this.cookieService.getCookie('current_set'));
@@ -37,8 +41,8 @@ export class ViewSetComponent implements OnInit {
     }
   }
 
-  onClickCard(id: number) {
-    this.modalService.init(ViewCardModalComponent, { cardId: id }, {});
+  onClickCard(cardName: string) {
+    this.modalService.init(ViewCardModalComponent, { cardName: cardName }, {});
   }
 
   alphabeticalSort(a: Card, b: Card): number {

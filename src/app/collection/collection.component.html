@@ -25,7 +25,7 @@
         </div>
         <div class="left-content">
             <div *ngIf="collection" class="cards-wrapper">
-                <div *ngFor="let card of filteredCollection" class="card" id="{{card.id}}" (click)="onClickCard(card.id)" >
+                <div *ngFor="let card of filteredCollection" class="card" id="{{card.id}}" (click)="onClickCard(card.name)" >
                     <div class="collected-amount">
                         <div [class.collected-amount-available]="countMap[card.id] >= 1">*</div>
                         <div [class.collected-amount-available]="countMap[card.id] >= 2">*</div>

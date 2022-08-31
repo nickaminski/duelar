@@ -7,6 +7,7 @@ export const environment = {
 };
 
 export const api_url = 'http://localhost:56841/api';
+export const images_url = 'http://localhost:56841/files';
 export const logger_max_retries = 3;
 
 /*

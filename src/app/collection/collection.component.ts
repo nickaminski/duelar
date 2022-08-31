@@ -69,9 +69,9 @@ export class CollectionComponent implements OnInit {
     this.onFilterChange();
   }
 
-  onClickCard(id: number) {
-    if (id !== -1)
-    this.modalService.init(ViewCardModalComponent, { cardId: id }, {});
+  onClickCard(cardName: string) {
+    if (cardName)
+    this.modalService.init(ViewCardModalComponent, { cardName: cardName }, {});
   }
 
   nukeCollection() {

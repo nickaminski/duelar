@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'view-set/:setName', component: ViewSetComponent},
   {path: 'dashboard', component: SetDashboardComponent},
   {path: 'sealed-draft', component: SealedDraftComponent},
-  {path: 'view-card/:cardId', component: ViewCardComponent},
+  {path: 'view-card/:cardName', component: ViewCardComponent},
   {path: 'decks', component: DecksComponent},
   {path: 'builder', redirectTo: 'builder/', pathMatch: 'full'},
   {path: 'builder/:deckId', component: DeckBuilderComponent},

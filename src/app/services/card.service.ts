@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { api_url } from 'src/environments/environment';
 
@@ -24,8 +24,8 @@ export class CardService {
     return this.http.get<Card[]>(`${api_url}/Card/GetAllCardsInSet?setName=${setName}`);
   }
 
-  getCardById(id: number): Observable<Card> {
-    return this.http.get<Card>(`${api_url}/Card/GetCardById?id=${id}`);
+  getCardByName(name: string): Observable<Card> {
+    return this.http.get<Card>(`${api_url}/Card/GetCardByName?name=${name}`);
   }
 
   getBackCard(): Card {

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CardSet } from '../services/card.service';
 import { Router } from '@angular/router';
 import { CookieService } from '../services/cookie.service';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-set-tile',
@@ -12,7 +13,11 @@ export class CardSetTileComponent implements OnInit {
 
   @Input() cardSet: CardSet;
 
-  constructor(private router: Router, private cookieService: CookieService) { }
+  images_url: string;
+
+  constructor(private router: Router, private cookieService: CookieService) {
+    this.images_url = images_url;
+  }
 
   ngOnInit(): void {
   }

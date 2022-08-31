@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Card, CardService } from '../services/card.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../services/modal.service';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-view-card',
@@ -10,29 +11,34 @@ import { ModalService } from '../services/modal.service';
 })
 export class ViewCardComponent implements OnInit {
 
-  @Input() cardId: number;
+  @Input() cardName: string;
   @Input() card: Card;
 
   _card: Card;
 
+  images_url: string;
   attributePath: string;
   racePath: string;
   typePath: string;
+  currentImage: number;
 
-  constructor(private route: ActivatedRoute, private cardService: CardService, private modalService: ModalService) { }
+  constructor(private route: ActivatedRoute, private cardService: CardService, private modalService: ModalService) {
+    this.images_url = images_url;
+    this.currentImage = 0;
+   }
 
   ngOnInit(): void {
-    if (this.route.snapshot.paramMap.get('cardId')) {
-      this.cardId = +this.route.snapshot.paramMap.get('cardId');
+    if (this.route.snapshot.paramMap.get('cardName')) {
+      this.cardName = this.route.snapshot.paramMap.get('cardName');
     }
 
-    if (this.cardId && !this.card) {
-      this.cardService.getCardById(this.cardId).subscribe(response => {
+    if (this.cardName && !this.card) {
+      this.cardService.getCardByName(this.cardName).subscribe(response => {
         this._card = response;
         this.assignImagePaths();
       });
     } 
-    else if (!this.cardId && this.card) {
+    else if (!this.cardName && this.card) {
       this._card = this.card;
       this.assignImagePaths();
     }
@@ -40,6 +46,9 @@ export class ViewCardComponent implements OnInit {
 
   closeModal() {
     this.modalService.destroy();
+  }
+  nextImage() {
+    this.currentImage = (this.currentImage + 1) % this._card.card_images.length;
   }
 
   private assignImagePaths() {

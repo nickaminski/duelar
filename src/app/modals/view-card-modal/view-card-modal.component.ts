@@ -8,7 +8,7 @@ import { Card } from 'src/app/services/card.service';
 })
 export class ViewCardModalComponent implements OnInit {
 
-  @Input() cardId: number;
+  @Input() cardName: number;
   @Input() card: Card;
 
   constructor() { 
