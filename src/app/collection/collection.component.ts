@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardService, Card, CardSet } from '../services/card.service';
 import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-modal.component';
 import { ModalService } from '../services/modal.service';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-collection',
@@ -10,6 +11,7 @@ import { ModalService } from '../services/modal.service';
 })
 export class CollectionComponent implements OnInit {
 
+  images_url: string;
   collection: Card[];
   filteredCollection: Card[];
   countMap: Map<number, number>;
@@ -28,6 +30,7 @@ export class CollectionComponent implements OnInit {
 
   constructor(private cardService: CardService, private modalService: ModalService) { 
     this.cardSets = [];
+    this.images_url = images_url;
   }
 
   ngOnInit(): void {

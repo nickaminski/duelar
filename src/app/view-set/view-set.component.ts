@@ -41,8 +41,8 @@ export class ViewSetComponent implements OnInit {
     }
   }
 
-  onClickCard(cardName: string) {
-    this.modalService.init(ViewCardModalComponent, { cardName: cardName }, {});
+  onClickCard(card: Card) {
+    this.modalService.init(ViewCardModalComponent, { card: card }, {});
   }
 
   alphabeticalSort(a: Card, b: Card): number {

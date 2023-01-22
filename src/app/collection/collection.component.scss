@@ -1,7 +1,7 @@
 .component-wrapper {
     display: flex;
     flex-flow: row;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 56px);
 }
 
 .left-panel {
@@ -89,6 +89,7 @@
     flex-flow: row;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 .card {

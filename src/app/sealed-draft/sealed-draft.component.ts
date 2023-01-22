@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService, CardSet, Card } from '../services/card.service';
 import { CookieService } from '../services/cookie.service';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sealed-draft',
@@ -9,6 +10,7 @@ import { CookieService } from '../services/cookie.service';
 })
 export class SealedDraftComponent implements OnInit {
 
+  images_url: string;
   maxYear: number;
   years: number[] = [];
   cardSets: CardSet[];
@@ -17,17 +19,17 @@ export class SealedDraftComponent implements OnInit {
   drafting: boolean;
   cards: Card[];
   emptyCardSet: boolean;
-
+  draftKey: string;
   draftedCards: Card[];
 
   constructor(
     private cardService: CardService, 
     private cookieService: CookieService) { 
-      
-    for(var x = 2002; x <= new Date().getFullYear(); x++) {
-      this.years.push(x);
-    }
-    this.maxYear = 2004;
+      this.images_url = images_url;
+      for(var x = 2002; x <= new Date().getFullYear(); x++) {
+        this.years.push(x);
+      }
+      this.maxYear = 2004;
   }
 
   ngOnInit(): void {
@@ -38,14 +40,10 @@ export class SealedDraftComponent implements OnInit {
     if (this.drafting)
       return;
 
-    this.cardService.getAllCardsInSet(this.selectedSet.set_name).subscribe(response => {
-      this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.card_sets, x.card_images, x.card_prices));
-      if (this.cards.length == 0) {
-        this.emptyCardSet = true;
-      } else {
-        this.emptyCardSet = false;
-        this.drafting = true;
-      }
+    this.cardService.startDraft(this.selectedSet.set_name, 24).subscribe({
+      next: result => this.draftKey = result,
+      error: err => console.log(err),
+      complete: () => this.drafting = true
     });
   }
 

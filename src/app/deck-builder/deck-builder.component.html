@@ -37,7 +37,7 @@
                         <div [class.collected-amount-available]="countMap[card.id] >= 3" 
                              [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 3">*</div>
                     </div>
-                    <img style="width: inherit;" src="{{card.card_images[0].image_url_small}}" />
+                    <img style="width: inherit;" src="{{images_url}}{{card.card_images[0].image_url_small}}" />
                 </div>
             </div>
             <div *ngIf="!collection || collection.length == 0" style="text-align: center; color: gray;">

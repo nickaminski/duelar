@@ -23,10 +23,10 @@
     No cards found in this set.
 </div>
 <div *ngIf="drafting" class="pack-wrapper">
-    <app-pack-opening [set]="selectedSet" [possibleCards]="cards" (onDraftCompleted)="completeDraft($event)"></app-pack-opening>
+    <app-pack-opening [set]="selectedSet" [draftKey]="draftKey" (onDraftCompleted)="completeDraft($event)"></app-pack-opening>
 </div>
 <div *ngIf="draftedCards && draftedCards.length > 0" class="drafted-cards-wrapper">
     <div *ngFor="let card of draftedCards" style="width: 124px;height: 178px;">
-        <img src="{{card.card_images[0].image_url_small}}" style="width: 124px;height: 178px;"/>
+        <img src="{{images_url}}{{card.card_images[0].image_url_small}}" style="width: 124px;height: 178px;"/>
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { api_url } from 'src/environments/environment';
 
 @Injectable({
@@ -60,6 +60,14 @@ export class CardService {
 
   addToCollection(newCards: Card[]): Observable<boolean> {
     return this.http.put<boolean>(`${api_url}/Card/AddToCollection`, newCards);
+  }
+
+  startDraft(setName: string, numPacks: number): Observable<any> {
+    return this.http.get<any>(`${api_url}/Card/StartDraft?setName=${setName}&numPacks=${numPacks}`);
+  }
+
+  rollDaftPack(draftKey: string): Observable<Card[]> {
+    return this.http.get<Card[]>(`${api_url}/Card/RollDraftPack?draftKey=${draftKey}`);
   }
 
 }

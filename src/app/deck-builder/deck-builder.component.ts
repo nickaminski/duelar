@@ -4,6 +4,7 @@ import { Deck, Card, CardService } from '../services/card.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalService } from '../services/modal.service';
 import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-modal.component';
+import { images_url } from 'src/environments/environment';
 
 @Component({
   selector: 'app-deck-builder',
@@ -12,6 +13,7 @@ import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-moda
 })
 export class DeckBuilderComponent implements OnInit {
 
+  images_url: string;
   currentDeck: Deck;
   filteredCollection: Card[];
   collection: Card[];
@@ -33,7 +35,9 @@ export class DeckBuilderComponent implements OnInit {
 
   private extraDeckCardTypes = ['Fusion Monster', 'Link Monster', 'Synchro Monster', 'Pendulum Monster'];
 
-  constructor(private router: Router, private modalService: ModalService, private cardService: CardService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private router: Router, private modalService: ModalService, private cardService: CardService, private route: ActivatedRoute, private location: Location) {
+    this.images_url = images_url;
+  }
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('deckId')) {
