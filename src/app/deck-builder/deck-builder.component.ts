@@ -40,6 +40,11 @@ export class DeckBuilderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentDeck = new Deck();
+    this.currentDeck.name = "New Deck";
+    this.currentDeck.cards = [];
+    this.currentDeck.cardCount = new Map<number, number>();
+    
     if (this.route.snapshot.paramMap.get('deckId')) {
       this.cardService.getDeckById(this.route.snapshot.paramMap.get('deckId')).subscribe(response => {
         if (response) {
@@ -49,14 +54,8 @@ export class DeckBuilderComponent implements OnInit {
           });
         }
       });
-    } else {
-      this.currentDeck = new Deck();
-      this.currentDeck.name = "New Deck";
-      this.currentDeck.cards = [];
-      this.currentDeck.cardCount = new Map<number, number>();
     }
     
-
     this.cardService.getCollection().subscribe(response =>{
       if (response) {
         this.collection = response.cards;

@@ -15,6 +15,7 @@ import { ViewCardModalComponent } from './modals/view-card-modal/view-card-modal
 import { DeckBuilderComponent } from './deck-builder/deck-builder.component';
 import { DecksComponent } from './decks/decks.component';
 import { CollectionComponent } from './collection/collection.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { CollectionComponent } from './collection/collection.component';
         ViewCardModalComponent,
         DeckBuilderComponent,
         DecksComponent,
-        CollectionComponent
+        CollectionComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,

@@ -12,6 +12,9 @@
         <div class="select-filler"></div>
     </div>    
 </div>
+<div *ngIf="!cards" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+    <app-loading></app-loading>
+</div>
 <div *ngIf="cards" class="cards-wrapper">
     <div *ngFor="let card of cards" class="card" id="{{card.id}}" (click)="onClickCard(card)">
         <img src="{{images_url}}{{card.card_images[0].image_url_small}}"/>
