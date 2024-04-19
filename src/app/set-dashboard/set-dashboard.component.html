@@ -7,7 +7,7 @@
         <span class="focus"></span>
     </div>
 </div>
-<div *ngIf="!cardSets" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+<div *ngIf="!cardSets" style="display: flex; justify-content: center; align-items: center; flex: 1;">
     <app-loading></app-loading>
 </div>
 <div class="tile-wrapper" *ngIf="cardSets && cardSets.length > 0">

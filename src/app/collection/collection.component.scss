@@ -61,6 +61,10 @@
     margin-left: 5px;
 }
 
+.filter-input input:focus {
+    outline: none;
+}
+
 .clear-x {
     color: white;
     font-weight: bold;

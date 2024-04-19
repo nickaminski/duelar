@@ -79,6 +79,8 @@ app-decks {
 }
 
 app-set-dashboard {
+    display: flex;
+    flex-flow: column;
     width: 100%;
     height: inherit;
 }
@@ -88,6 +90,13 @@ app-sealed-draft {
 }
 
 app-collection {
+    width: 100%;
+}
+
+app-view-set {
+    display: flex;
+    flex-flow: column;
+    height: inherit;
     width: 100%;
 }
 

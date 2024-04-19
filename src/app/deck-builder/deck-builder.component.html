@@ -7,16 +7,16 @@
             </div>
             <div class="card-type-filters">
                 <div (click)="showMonster=!showMonster; onFilterChange()">
-                    <img src="assets/images/Normal Monster.jpg" class="inactive" style="width: 16px;" [class.active]="showMonster" />
+                    <img src="assets/images/NormalMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showMonster" />
                 </div>
                 <div (click)="showSpell=!showSpell; onFilterChange()">
-                    <img src="assets/images/Spell Card.jpg" class="inactive" style="width: 16px;" [class.active]="showSpell" />
+                    <img src="assets/images/SpellCard.jpg" class="inactive" style="width: 16px;" [class.active]="showSpell" />
                 </div>
                 <div (click)="showTrap=!showTrap; onFilterChange()">
-                    <img src="assets/images/Trap Card.jpg" class="inactive" style="width: 16px;" [class.active]="showTrap" />
+                    <img src="assets/images/TrapCard.jpg" class="inactive" style="width: 16px;" [class.active]="showTrap" />
                 </div>
                 <div (click)="showExtra=!showExtra; onFilterChange()">
-                    <img src="assets/images/Fusion Monster.jpg" class="inactive" style="width: 16px;" [class.active]="showExtra" />
+                    <img src="assets/images/FusionMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showExtra" />
                 </div>
             </div>
             <div>
@@ -53,19 +53,19 @@
             <input [(ngModel)]="currentDeck.name" class="deck-name-input" placeholder="New Deck Name" />
             <div class="card-types">
                 <div style="margin: 0px;">
-                    <img src="assets/images/Normal Monster.jpg" style="width: 16px;" />
+                    <img src="assets/images/NormalMonster.jpg" style="width: 16px;" />
                     <div style="margin: 5px;">{{monsterCount}}</div>
                 </div>
                 <div>
-                    <img src="assets/images/Spell Card.jpg" style="width: 16px;" />
+                    <img src="assets/images/SpellCard.jpg" style="width: 16px;" />
                     <div style="margin: 5px;">{{spellCount}}</div>
                 </div>
                 <div>
-                    <img src="assets/images/Trap Card.jpg" style="width: 16px;" />
+                    <img src="assets/images/TrapCard.jpg" style="width: 16px;" />
                     <div style="margin: 5px;">{{trapCount}}</div>
                 </div>
                 <div style="margin-left: 25px;">
-                    <img src="assets/images/Fusion Monster.jpg" style="width: 16px;" />
+                    <img src="assets/images/FusionMonster.jpg" style="width: 16px;" />
                     <div style="margin: 5px;">{{extraCount}}</div>
                 </div>
                 <div style="margin-left: 10px;">
