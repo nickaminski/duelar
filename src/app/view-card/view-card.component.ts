@@ -55,7 +55,7 @@ export class ViewCardComponent implements OnInit {
     if (this._card.attribute)
       this.attributePath = `assets/images/${this._card.attribute}.jpg`;
     if (this._card.race)
-      this.racePath = `assets/images/${this._card.race}.png`;
+      this.racePath = `assets/images/${this._card.race.replaceAll(' ', '')}.png`;
     if (this._card.type)
       this.typePath = `assets/images/${this._card.type.replaceAll(' ', '')}.jpg`;
   }

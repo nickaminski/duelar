@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.card > img {
+    width: 168px;
+}
+
 .component-header {
     display: flex;
     flex-flow: column;

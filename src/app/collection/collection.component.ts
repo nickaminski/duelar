@@ -26,7 +26,7 @@ export class CollectionComponent implements OnInit {
   showTrap: boolean;
   showExtra: boolean;
 
-  private extraDeckCardTypes = ['Fusion Monster', 'Link Monster', 'Synchro Monster', 'Pendulum Monster'];
+  private extraDeckCardTypes = ['Fusion Monster', 'Link Monster', 'Synchro Monster', 'Pendulum Monster', 'XYZ Monster'];
 
   constructor(private cardService: CardService, private modalService: ModalService) { 
     this.cardSets = [];
