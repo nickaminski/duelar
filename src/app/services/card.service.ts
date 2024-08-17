@@ -31,7 +31,7 @@ export class CardService {
   getBackCard(): Card {
     var images = [];
     images.push({ image_url_small: 'assets/images/back_high.jpg' });
-    return new Card(-1, 'Back', '', '', '', '', '', '', '', '', [], images, []);
+    return new Card(-1, 'Back', '', '', '', '', '', '', '', '', '', [], [], images, []);
   }
 
   getDecks(): Observable<Deck[]> {
@@ -109,11 +109,13 @@ export class Card {
   race: string;
   attribute: string;
   archetype: string;
+  linkval: string;
+  linkmarkers: string[];
   card_sets: any[];
   card_images: any[];
   card_prices: any[];
 
-  constructor(id, name, type, desc, atk, def, level, race, attribute, archetype, card_sets, card_images, card_prices){
+  constructor(id, name, type, desc, atk, def, level, race, attribute, archetype, linkval, linkmarkers, card_sets, card_images, card_prices){
     this.id = id;
     this.name = name;
     this.type = type;
@@ -124,6 +126,8 @@ export class Card {
     this.race = race;
     this.attribute = attribute;
     this.archetype = archetype;
+    this.linkval = linkval;
+    this.linkmarkers = linkmarkers;
     this.card_sets = card_sets;
     this.card_images = card_images;
     this.card_prices = card_prices;

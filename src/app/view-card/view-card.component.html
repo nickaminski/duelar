@@ -12,7 +12,17 @@
                 <div><img src="{{attributePath}}" alt="{{_card.attribute}}" style="width: 20px; height: 20px; margin: 3px;" *ngIf="attributePath"> <img src="{{racePath}}" alt="{{_card.race}}"  style="width: 20px; height: 20px; margin: 3px;"></div>
             </div>
             <div class="data-row" *ngIf="_card.type.indexOf('Monster') !== -1">
-                ATK/{{_card.atk}} DEF/{{_card.def}}
+                <div class="stats">
+                    <div style="margin-right: 6px;">
+                        ATK/{{_card.atk}}
+                    </div>
+                    <div *ngIf="_card.def">
+                        DEF/{{_card.def}}
+                    </div>
+                    <div *ngIf="_card.linkval">
+                        Link {{_card.linkval}}
+                    </div>
+                </div>
             </div>
             <div class="data-row">
                 {{_card.desc}}

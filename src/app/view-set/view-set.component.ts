@@ -58,13 +58,13 @@ export class ViewSetComponent implements OnInit {
 
   private useRoutedSet() {
     this.cardService.getAllCardsInSet(this.route.snapshot.paramMap.get('setName')).subscribe(response => {
-      this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.card_sets, x.card_images, x.card_prices));
+      this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.linkval, x.linkmarkers, x.card_sets, x.card_images, x.card_prices));
     });
   }
 
   private useCookieSet() {
     this.cardService.getAllCardsInSet(this.currentSet.set_name).subscribe(response => {
-      this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.card_sets, x.card_images, x.card_prices));
+      this.cards = response.map(x => new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.linkval, x.linkmarkers, x.card_sets, x.card_images, x.card_prices));
     });
   }
 

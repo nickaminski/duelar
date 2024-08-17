@@ -40,7 +40,7 @@ export class PackOpeningComponent implements OnInit {
 
     this.cardService.rollDaftPack(this.draftKey).subscribe(response => {
       this.flipCards = [];
-      response.forEach(x => this.flipCards.push(new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.card_sets, x.card_images, x.card_prices)));
+      response.forEach(x => this.flipCards.push(new Card(x.id, x.name, x.type, x.desc, x.atk, x.def, x.level, x.race, x.attribute, x.archetype, x.linkval, x.linkmarkers, x.card_sets, x.card_images, x.card_prices)));
       this.flipCards.forEach(x => this.draftedCards.push(x));
       if (this.completed) {
         this.onDraftCompleted.emit(this.draftedCards);

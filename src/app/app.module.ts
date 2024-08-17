@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CardSetTileComponent } from './card-set-tile/card-set-tile.component';
 import { ViewSetComponent } from './view-set/view-set.component';
@@ -17,8 +17,7 @@ import { DecksComponent } from './decks/decks.component';
 import { CollectionComponent } from './collection/collection.component';
 import { LoadingComponent } from './loading/loading.component';
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         CardSetTileComponent,
         ViewSetComponent,
@@ -33,13 +32,7 @@ import { LoadingComponent } from './loading/loading.component';
         CollectionComponent,
         LoadingComponent
     ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
-        FormsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
-})
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
