@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { api_url } from 'src/environments/environment';
 
 @Injectable({
@@ -64,6 +64,10 @@ export class CardService {
 
   startDraft(setName: string, numPacks: number): Observable<any> {
     return this.http.get<any>(`${api_url}/Card/StartDraft?setName=${setName}&numPacks=${numPacks}`);
+  }
+
+  getDraftState(draftKey: string): Observable<DraftState> {
+    return this.http.get<DraftState>(`${api_url}/Card/GetDraftState?draftKey=${draftKey}`);
   }
 
   rollDaftPack(draftKey: string): Observable<Card[]> {
@@ -173,4 +177,12 @@ export class Deck {
   name: string;
   cards: Card[];
   cardCount: Map<number, number>;
+}
+
+export interface DraftState {
+  draft_status: string;
+  current_pack: number;
+  set_name: string;
+  num_packs: number;
+  cards: Card[];
 }

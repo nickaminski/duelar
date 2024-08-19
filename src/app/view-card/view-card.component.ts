@@ -42,6 +42,12 @@ export class ViewCardComponent implements OnInit {
       this._card = this.card;
       this.assignImagePaths();
     }
+
+    let uniqueImages = {};
+    this._card.card_images.forEach(image => {
+      uniqueImages[image.id] = image;
+    });
+    this._card.card_images = Object.values(uniqueImages);
   }
 
   closeModal() {

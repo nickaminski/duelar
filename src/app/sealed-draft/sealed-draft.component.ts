@@ -41,7 +41,10 @@ export class SealedDraftComponent implements OnInit {
       return;
 
     this.cardService.startDraft(this.selectedSet.set_name, 24).subscribe({
-      next: result => this.draftKey = result,
+      next: result => {
+        this.draftKey = result;
+        this.cookieService.setCookie('draftKey', this.draftKey);
+      },
       error: err => console.log(err),
       complete: () => this.drafting = true
     });
@@ -52,16 +55,13 @@ export class SealedDraftComponent implements OnInit {
   }
 
   discardDraft() {
-    this.cookieService.deleteCookie('current_draft_collection');
-    this.drafting = false;
-    this.draftedCards = undefined;
+    this.quitDrafting();
   }
 
   saveDraft() {
     this.cardService.addToCollection(this.draftedCards).subscribe(response => {
       if (response) {
-        this.drafting = false;
-        this.draftedCards = undefined;
+        this.quitDrafting();
       }
     });
   }
@@ -71,6 +71,7 @@ export class SealedDraftComponent implements OnInit {
       this.cardSets = response.map(x => new CardSet(x.set_name, x.set_code, x.num_of_cards, x.tcg_date));
       this.filterSets();
       this.emptyCardSet = false;
+      this.checkExistingDraft();
     });
   }
 
@@ -88,5 +89,33 @@ export class SealedDraftComponent implements OnInit {
 
   onSetChange() {
     this.emptyCardSet = false;
+  }
+
+  checkExistingDraft() {
+    let cookie = this.cookieService.getCookie('draftKey');
+    if (!cookie) return;
+
+    this.cardService.getDraftState(cookie).subscribe({
+      next: result => {
+        this.selectedSet = this.cardSets.find(x => x.set_name == result.set_name);
+        this.draftKey = cookie;
+        this.drafting = true;
+        sessionStorage.setItem('draftState', JSON.stringify(result));
+        if (result.current_pack == result.num_packs) {
+          this.draftedCards = result.cards;
+        }
+      },
+      error: err => {
+        this.cookieService.deleteCookie('draftKey');
+        sessionStorage.removeItem('draftState');
+      }
+    });
+  }
+
+  quitDrafting() {
+    this.cookieService.deleteCookie('draftKey');
+    sessionStorage.removeItem('draftState');
+    this.drafting = false;
+    this.draftedCards = undefined;
   }
 }
