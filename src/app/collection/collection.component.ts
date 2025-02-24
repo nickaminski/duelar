@@ -5,9 +5,10 @@ import { ModalService } from '../services/modal.service';
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.scss']
+    selector: 'app-collection',
+    templateUrl: './collection.component.html',
+    styleUrls: ['./collection.component.scss'],
+    standalone: false
 })
 export class CollectionComponent implements OnInit {
 

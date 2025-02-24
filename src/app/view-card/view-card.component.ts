@@ -5,9 +5,10 @@ import { ModalService } from '../services/modal.service';
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-view-card',
-  templateUrl: './view-card.component.html',
-  styleUrls: ['./view-card.component.scss']
+    selector: 'app-view-card',
+    templateUrl: './view-card.component.html',
+    styleUrls: ['./view-card.component.scss'],
+    standalone: false
 })
 export class ViewCardComponent implements OnInit {
 

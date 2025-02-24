@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CardService, Deck } from '../services/card.service';
 
 @Component({
-  selector: 'app-decks',
-  templateUrl: './decks.component.html',
-  styleUrls: ['./decks.component.scss']
+    selector: 'app-decks',
+    templateUrl: './decks.component.html',
+    styleUrls: ['./decks.component.scss'],
+    standalone: false
 })
 export class DecksComponent implements OnInit {
 

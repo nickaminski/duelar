@@ -6,9 +6,10 @@ import { images_url } from 'src/environments/environment';
 import { CookieService } from '../services/cookie.service';
 
 @Component({
-  selector: 'app-pack-opening',
-  templateUrl: './pack-opening.component.html',
-  styleUrls: ['./pack-opening.component.scss']
+    selector: 'app-pack-opening',
+    templateUrl: './pack-opening.component.html',
+    styleUrls: ['./pack-opening.component.scss'],
+    standalone: false
 })
 export class PackOpeningComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { CookieService } from '../services/cookie.service';
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-sealed-draft',
-  templateUrl: './sealed-draft.component.html',
-  styleUrls: ['./sealed-draft.component.scss']
+    selector: 'app-sealed-draft',
+    templateUrl: './sealed-draft.component.html',
+    styleUrls: ['./sealed-draft.component.scss'],
+    standalone: false
 })
 export class SealedDraftComponent implements OnInit {
 

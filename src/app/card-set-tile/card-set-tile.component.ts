@@ -5,9 +5,10 @@ import { CookieService } from '../services/cookie.service';
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-card-set-tile',
-  templateUrl: './card-set-tile.component.html',
-  styleUrls: ['./card-set-tile.component.scss']
+    selector: 'app-card-set-tile',
+    templateUrl: './card-set-tile.component.html',
+    styleUrls: ['./card-set-tile.component.scss'],
+    standalone: false
 })
 export class CardSetTileComponent implements OnInit {
 

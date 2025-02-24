@@ -7,9 +7,10 @@ import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-moda
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-view-set',
-  templateUrl: './view-set.component.html',
-  styleUrls: ['./view-set.component.scss']
+    selector: 'app-view-set',
+    templateUrl: './view-set.component.html',
+    styleUrls: ['./view-set.component.scss'],
+    standalone: false
 })
 export class ViewSetComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { LoggerService } from '../services/logger.service';
 import { CardService, CardSet } from '../services/card.service';
 
 @Component({
-  selector: 'app-set-dashboard',
-  templateUrl: './set-dashboard.component.html',
-  styleUrls: ['./set-dashboard.component.scss']
+    selector: 'app-set-dashboard',
+    templateUrl: './set-dashboard.component.html',
+    styleUrls: ['./set-dashboard.component.scss'],
+    standalone: false
 })
 export class SetDashboardComponent implements OnInit {
 

@@ -7,9 +7,10 @@ import { ViewCardModalComponent } from '../modals/view-card-modal/view-card-moda
 import { images_url } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-deck-builder',
-  templateUrl: './deck-builder.component.html',
-  styleUrls: ['./deck-builder.component.scss']
+    selector: 'app-deck-builder',
+    templateUrl: './deck-builder.component.html',
+    styleUrls: ['./deck-builder.component.scss'],
+    standalone: false
 })
 export class DeckBuilderComponent implements OnInit {
 
