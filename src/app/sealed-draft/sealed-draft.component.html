@@ -1,32 +1,50 @@
 <div class="component-header">
-    <div class="select-wrapper" style="width: 120px;">
-        <div class="select">
-            <select [(ngModel)]="maxYear" (change)="getCardSets()">
-                <option *ngFor="let year of years" [value]="year">{{year}}</option>
-            </select>
-            <span class="focus"></span>
-        </div>
+  <div class="select-wrapper" style="width: 120px;">
+    <div class="select">
+      <select [(ngModel)]="maxYear" (change)="getCardSets()">
+        @for (year of years; track year) {
+          <option [value]="year">{{year}}</option>
+        }
+      </select>
+      <span class="focus"></span>
     </div>
-    <div class="select-wrapper" style="margin-left: 8px;">
-        <div class="select" style="max-width: unset;">
-            <select [(ngModel)]="selectedSet" (change)="onSetChange()">
-                <option *ngFor="let set of filteredSets" [ngValue]="set">{{set.set_name}}</option>
-            </select>
-            <span class="focus"></span>
-        </div>
+  </div>
+  <div class="select-wrapper" style="margin-left: 8px;">
+    <div class="select" style="max-width: unset;">
+      <select [(ngModel)]="selectedSet" (change)="onSetChange()">
+        @for (set of filteredSets; track set) {
+          <option [ngValue]="set">{{set.set_name}}</option>
+        }
+      </select>
+      <span class="focus"></span>
     </div>
-    <button (click)="startDraft()" *ngIf="!draftedCards" [disabled]="drafting || emptyCardSet">Start Draft</button>
-    <button *ngIf="draftedCards" (click)="discardDraft()">Discard Draft</button>
-    <button *ngIf="draftedCards" (click)="saveDraft()">Save and Continue</button>
+  </div>
+  @if (!draftedCards) {
+    <button (click)="startDraft()" [disabled]="drafting || emptyCardSet">Start Draft</button>
+  }
+  @if (draftedCards) {
+    <button (click)="discardDraft()">Discard Draft</button>
+  }
+  @if (draftedCards) {
+    <button (click)="saveDraft()">Save and Continue</button>
+  }
 </div>
-<div *ngIf="emptyCardSet">
+@if (emptyCardSet) {
+  <div>
     No cards found in this set.
-</div>
-<div *ngIf="drafting" class="pack-wrapper">
+  </div>
+}
+@if (drafting) {
+  <div class="pack-wrapper">
     <app-pack-opening [set]="selectedSet" [draftKey]="draftKey" (onDraftCompleted)="completeDraft($event)"></app-pack-opening>
-</div>
-<div *ngIf="draftedCards && draftedCards.length > 0" class="drafted-cards-wrapper">
-    <div *ngFor="let card of draftedCards" style="width: 124px;height: 178px;">
+  </div>
+}
+@if (draftedCards && draftedCards.length > 0) {
+  <div class="drafted-cards-wrapper">
+    @for (card of draftedCards; track card) {
+      <div style="width: 124px;height: 178px;">
         <img src="{{images_url}}{{card.card_images[0].image_url_small}}" style="width: 124px;height: 178px;"/>
-    </div>
-</div>
+      </div>
+    }
+  </div>
+}

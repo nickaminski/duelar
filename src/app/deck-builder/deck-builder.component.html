@@ -1,90 +1,100 @@
 <div class="component-wrapper">
-    <div class="left-panel">
-        <div class="left-header">
-            <div class="filter-input">
-                <input [(ngModel)]="filterText" placeholder="Search..." (input)="onFilterChange()" />
-                <div class="clear-x" (click)="clearFilterText()">x</div>
-            </div>
-            <div class="card-type-filters">
-                <div (click)="showMonster=!showMonster; onFilterChange()">
-                    <img src="assets/images/NormalMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showMonster" />
-                </div>
-                <div (click)="showSpell=!showSpell; onFilterChange()">
-                    <img src="assets/images/SpellCard.jpg" class="inactive" style="width: 16px;" [class.active]="showSpell" />
-                </div>
-                <div (click)="showTrap=!showTrap; onFilterChange()">
-                    <img src="assets/images/TrapCard.jpg" class="inactive" style="width: 16px;" [class.active]="showTrap" />
-                </div>
-                <div (click)="showExtra=!showExtra; onFilterChange()">
-                    <img src="assets/images/FusionMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showExtra" />
-                </div>
-            </div>
-            <div>
-                <button class="inspect-button" (click)="inspectMode=!inspectMode" [class.active]="inspectMode" [class.inactive]="!inspectMode">Inspect</button>
-            </div>
-            <div>
-                <button (click)="cancel()" class="inactive">Cancel</button>
-            </div>
+  <div class="left-panel">
+    <div class="left-header">
+      <div class="filter-input">
+        <input [(ngModel)]="filterText" placeholder="Search..." (input)="onFilterChange()" />
+        <div class="clear-x" (click)="clearFilterText()">x</div>
+      </div>
+      <div class="card-type-filters">
+        <div (click)="showMonster=!showMonster; onFilterChange()">
+          <img src="assets/images/NormalMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showMonster" />
         </div>
-        <div class="left-content">
-            <div *ngIf="filteredCollection" class="cards-wrapper">
-                <div *ngFor="let card of filteredCollection" class="card" id="{{card.id}}" (click)="tryAddCard(card)" [class.inspect-card]=inspectMode >
-                    <div class="collected-amount">
-                        <div [class.collected-amount-available]="countMap[card.id] >= 1" 
-                             [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 1">*</div>
-                        <div [class.collected-amount-available]="countMap[card.id] >= 2" 
-                             [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 2">*</div>
-                        <div [class.collected-amount-available]="countMap[card.id] >= 3" 
-                             [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 3">*</div>
-                    </div>
-                    <img style="width: inherit;" src="{{images_url}}{{card.card_images[0].image_url_small}}" />
-                </div>
-            </div>
-            <div *ngIf="!collection || collection.length == 0" style="text-align: center; color: gray;">
-                Draft some packs you duck
-            </div>
-            <div *ngIf="collection && collection.length > 0 && filteredCollection && filteredCollection.length == 0" style="text-align: center; color: gray;">
-                No cards found containing this name
-            </div>
+        <div (click)="showSpell=!showSpell; onFilterChange()">
+          <img src="assets/images/SpellCard.jpg" class="inactive" style="width: 16px;" [class.active]="showSpell" />
         </div>
+        <div (click)="showTrap=!showTrap; onFilterChange()">
+          <img src="assets/images/TrapCard.jpg" class="inactive" style="width: 16px;" [class.active]="showTrap" />
+        </div>
+        <div (click)="showExtra=!showExtra; onFilterChange()">
+          <img src="assets/images/FusionMonster.jpg" class="inactive" style="width: 16px;" [class.active]="showExtra" />
+        </div>
+      </div>
+      <div>
+        <button class="inspect-button" (click)="inspectMode=!inspectMode" [class.active]="inspectMode" [class.inactive]="!inspectMode">Inspect</button>
+      </div>
+      <div>
+        <button (click)="cancel()" class="inactive">Cancel</button>
+      </div>
     </div>
-    <div class="right-panel">
-        <div class="right-header">
-            <input [(ngModel)]="currentDeck.name" class="deck-name-input" placeholder="New Deck Name" />
-            <div class="card-types">
-                <div style="margin: 0px;">
-                    <img src="assets/images/NormalMonster.jpg" style="width: 16px;" />
-                    <div style="margin: 5px;">{{monsterCount}}</div>
-                </div>
-                <div>
-                    <img src="assets/images/SpellCard.jpg" style="width: 16px;" />
-                    <div style="margin: 5px;">{{spellCount}}</div>
-                </div>
-                <div>
-                    <img src="assets/images/TrapCard.jpg" style="width: 16px;" />
-                    <div style="margin: 5px;">{{trapCount}}</div>
-                </div>
-                <div style="margin-left: 25px;">
-                    <img src="assets/images/FusionMonster.jpg" style="width: 16px;" />
-                    <div style="margin: 5px;">{{extraCount}}</div>
-                </div>
-                <div style="margin-left: 10px;">
-                    <div>{{mainDeckCount}}/40</div>
-                </div>
+    <div class="left-content">
+      @if (filteredCollection) {
+        <div class="cards-wrapper">
+          @for (card of filteredCollection; track card) {
+            <div class="card" id="{{card.id}}" (click)="tryAddCard(card)" [class.inspect-card]=inspectMode >
+              <div class="collected-amount">
+                <div [class.collected-amount-available]="countMap[card.id] >= 1"
+                [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 1">*</div>
+                <div [class.collected-amount-available]="countMap[card.id] >= 2"
+                [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 2">*</div>
+                <div [class.collected-amount-available]="countMap[card.id] >= 3"
+                [class.collected-amount-selected]="currentDeck.cardCount[card.id] && currentDeck.cardCount[card.id] >= 3">*</div>
+              </div>
+              <img style="width: inherit;" src="{{images_url}}{{card.card_images[0].image_url_small}}" />
             </div>
+          }
         </div>
-        <div class="right-content">
-            <div *ngFor="let card of currentDeck.cards">
-                <div class="deck-card-row" (click)="removeCardFromDeck(card.id)">
-                    <div class="card-count">
-                        {{currentDeck.cardCount[card.id]}}
-                    </div>
-                    <div class="card-name">
-                        {{card.name}}
-                    </div>
-                </div>
-            </div>
+      }
+      @if (!collection || collection.length == 0) {
+        <div style="text-align: center; color: gray;">
+          Draft some packs you duck
         </div>
-        <div class="right-footer"><button class="done-button" (click)="onDone()">Done</button></div>
+      }
+      @if (collection && collection.length > 0 && filteredCollection && filteredCollection.length == 0) {
+        <div style="text-align: center; color: gray;">
+          No cards found containing this name
+        </div>
+      }
     </div>
+  </div>
+  <div class="right-panel">
+    <div class="right-header">
+      <input [(ngModel)]="currentDeck.name" class="deck-name-input" placeholder="New Deck Name" />
+      <div class="card-types">
+        <div style="margin: 0px;">
+          <img src="assets/images/NormalMonster.jpg" style="width: 16px;" />
+          <div style="margin: 5px;">{{monsterCount}}</div>
+        </div>
+        <div>
+          <img src="assets/images/SpellCard.jpg" style="width: 16px;" />
+          <div style="margin: 5px;">{{spellCount}}</div>
+        </div>
+        <div>
+          <img src="assets/images/TrapCard.jpg" style="width: 16px;" />
+          <div style="margin: 5px;">{{trapCount}}</div>
+        </div>
+        <div style="margin-left: 25px;">
+          <img src="assets/images/FusionMonster.jpg" style="width: 16px;" />
+          <div style="margin: 5px;">{{extraCount}}</div>
+        </div>
+        <div style="margin-left: 10px;">
+          <div>{{mainDeckCount}}/40</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-content">
+      @for (card of currentDeck.cards; track card) {
+        <div>
+          <div class="deck-card-row" (click)="removeCardFromDeck(card.id)">
+            <div class="card-count">
+              {{currentDeck.cardCount[card.id]}}
+            </div>
+            <div class="card-name">
+              {{card.name}}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="right-footer"><button class="done-button" (click)="onDone()">Done</button></div>
+  </div>
 </div>

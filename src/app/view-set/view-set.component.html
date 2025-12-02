@@ -1,24 +1,30 @@
 <div class="component-header">
-    <h2>{{currentSet.set_name}}</h2>
-    <div class="select-wrapper">
-        <label for="sortSelect" style="margin: auto 0; font-size: 1.2em;">Sort Mode: </label>
-        <div class="select">
-            <select #sortSelect [(ngModel)]="sort" (change)="onSortChange(sortSelect.value)">
-                <option value="Alphabetical">Alphabetical</option>
-                <option value="Rarity">Rarity</option>
-            </select>
-            <span class="focus"></span>
-        </div>
-        <div class="select-filler"></div>
-    </div>    
+  <h2>{{currentSet.set_name}}</h2>
+  <div class="select-wrapper">
+    <label for="sortSelect" style="margin: auto 0; font-size: 1.2em;">Sort Mode: </label>
+    <div class="select">
+      <select #sortSelect [(ngModel)]="sort" (change)="onSortChange(sortSelect.value)">
+        <option value="Alphabetical">Alphabetical</option>
+        <option value="Rarity">Rarity</option>
+      </select>
+      <span class="focus"></span>
+    </div>
+    <div class="select-filler"></div>
+  </div>
 </div>
-<div *ngIf="!cards" style="display: flex; justify-content: center; align-items: center; flex: 1;">
+@if (!cards) {
+  <div style="display: flex; justify-content: center; align-items: center; flex: 1;">
     <app-loading></app-loading>
-</div>
-<div *ngIf="cards" class="cards-wrapper">
-    <div *ngFor="let card of cards" class="card" id="{{card.id}}" (click)="onClickCard(card)">
+  </div>
+}
+@if (cards) {
+  <div class="cards-wrapper">
+    @for (card of cards; track card) {
+      <div class="card" id="{{card.id}}" (click)="onClickCard(card)">
         <img src="{{images_url}}{{card.card_images[0].image_url_small}}"/>
         <div>{{card.name}}</div>
         <div>{{card.getRarityString(currentSet.set_code)}}</div>
-    </div>
-</div>
+      </div>
+    }
+  </div>
+}

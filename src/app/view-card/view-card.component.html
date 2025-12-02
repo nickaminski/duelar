@@ -1,35 +1,49 @@
-<div *ngIf="_card">
+@if (_card) {
+  <div>
     <div class="wrapper">
-        <img src="{{images_url}}{{_card.card_images[currentImage].image_url}}" class="display-image" (click)="nextImage()" />
-        <div class="close-button" (click)="closeModal()">X</div>
-        <div class="data-wrapper">
-            <div class="data-row">
-                <h1 class="heading-name">{{_card.name}}</h1>
-                <div class="card-level" *ngIf="_card.type.indexOf('Monster') !== -1"><img src="assets/images/level.png" /> {{_card.level}}</div>
-            </div>
-            <div class="data-row">
-                <div><img src="{{typePath}}"  style="height: 25px; padding-right: 5px;" /> {{_card.type}} / ID: {{_card.id}}</div>
-                <div><img src="{{attributePath}}" alt="{{_card.attribute}}" style="width: 20px; height: 20px; margin: 3px;" *ngIf="attributePath"> <img src="{{racePath}}" alt="{{_card.race}}"  style="width: 20px; height: 20px; margin: 3px;"></div>
-            </div>
-            <div class="data-row" *ngIf="_card.type.indexOf('Monster') !== -1">
-                <div class="stats">
-                    <div style="margin-right: 6px;">
-                        ATK/{{_card.atk}}
-                    </div>
-                    <div *ngIf="_card.def">
-                        DEF/{{_card.def}}
-                    </div>
-                    <div *ngIf="_card.linkval">
-                        Link {{_card.linkval}}
-                    </div>
-                </div>
-            </div>
-            <div class="data-row">
-                {{_card.desc}}
-            </div>
-            <div class="data-row" *ngIf="_card.archetype">
-                Archetype: {{_card.archetype}}
-            </div>
+      <img src="{{images_url}}{{_card.card_images[currentImage].image_url}}" class="display-image" (click)="nextImage()" />
+      <div class="close-button" (click)="closeModal()">X</div>
+      <div class="data-wrapper">
+        <div class="data-row">
+          <h1 class="heading-name">{{_card.name}}</h1>
+          @if (_card.type.indexOf('Monster') !== -1) {
+            <div class="card-level"><img src="assets/images/level.png" /> {{_card.level}}</div>
+          }
         </div>
+        <div class="data-row">
+          <div><img src="{{typePath}}"  style="height: 25px; padding-right: 5px;" /> {{_card.type}} / ID: {{_card.id}}</div>
+          <div>@if (attributePath) {
+            <img src="{{attributePath}}" alt="{{_card.attribute}}" style="width: 20px; height: 20px; margin: 3px;">
+            } <img src="{{racePath}}" alt="{{_card.race}}"  style="width: 20px; height: 20px; margin: 3px;"></div>
+          </div>
+          @if (_card.type.indexOf('Monster') !== -1) {
+            <div class="data-row">
+              <div class="stats">
+                <div style="margin-right: 6px;">
+                  ATK/{{_card.atk}}
+                </div>
+                @if (_card.def) {
+                  <div>
+                    DEF/{{_card.def}}
+                  </div>
+                }
+                @if (_card.linkval) {
+                  <div>
+                    Link {{_card.linkval}}
+                  </div>
+                }
+              </div>
+            </div>
+          }
+          <div class="data-row">
+            {{_card.desc}}
+          </div>
+          @if (_card.archetype) {
+            <div class="data-row">
+              Archetype: {{_card.archetype}}
+            </div>
+          }
+        </div>
+      </div>
     </div>
-</div>
+  }

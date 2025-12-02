@@ -1,19 +1,29 @@
 <div class="select-wrapper">
-    <label>Year:</label>
-    <div class="select">
-        <select [(ngModel)]="maxYear" (change)="getCardSets()">
-            <option *ngFor="let year of years" [value]="year">{{year}}</option>
-        </select>
-        <span class="focus"></span>
-    </div>
+  <label>Year:</label>
+  <div class="select">
+    <select [(ngModel)]="maxYear" (change)="getCardSets()">
+      @for (year of years; track year) {
+        <option [value]="year">{{year}}</option>
+      }
+    </select>
+    <span class="focus"></span>
+  </div>
 </div>
-<div *ngIf="!cardSets" style="display: flex; justify-content: center; align-items: center; flex: 1;">
+@if (!cardSets) {
+  <div style="display: flex; justify-content: center; align-items: center; flex: 1;">
     <app-loading></app-loading>
-</div>
-<div class="tile-wrapper" *ngIf="cardSets && cardSets.length > 0">
-    <div *ngFor="let set of cardSets">
-        <div *ngIf="set.setFilter(maxYear)">
+  </div>
+}
+@if (cardSets && cardSets.length > 0) {
+  <div class="tile-wrapper">
+    @for (set of cardSets; track set) {
+      <div>
+        @if (set.setFilter(maxYear)) {
+          <div>
             <app-card-set-tile [cardSet]="set"></app-card-set-tile>
-        </div>
-    </div>
-</div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

@@ -1,15 +1,17 @@
 <div style="display: flex; flex-flow: column; align-items: center;">
-    <div class="component-header">
-        <h1>Decks</h1>
-        <button routerLink="/builder/{{selectedDeck.deck_id}}" [disabled]="!selectedDeck">Edit Deck</button>
-        <button routerLink='/collection'>Collection</button>
-        <button [disabled]="!selectedDeck" (click)="deleteDeck(selectedDeck.deck_id)">Delete Deck</button>
-    </div>
+  <div class="component-header">
+    <h1>Decks</h1>
+    <button routerLink="/builder/{{selectedDeck.deck_id}}" [disabled]="!selectedDeck">Edit Deck</button>
+    <button routerLink='/collection'>Collection</button>
+    <button [disabled]="!selectedDeck" (click)="deleteDeck(selectedDeck.deck_id)">Delete Deck</button>
+  </div>
 </div>
 <div class="component-body">
-    <div class="add-deck"><a routerLink="/builder">+</a></div>
-    <div *ngFor="let deck of decks" class="deck-wrapper" (click)="selectedDeck=deck">
-        <div class="deck-button" [class.selected-deck]="selectedDeck.deck_id==deck.deck_id"></div>
-        <input [(ngModel)]="deck.name" class="deck-label" maxlength="20" />
+  <div class="add-deck"><a routerLink="/builder">+</a></div>
+  @for (deck of decks; track deck) {
+    <div class="deck-wrapper" (click)="selectedDeck=deck">
+      <div class="deck-button" [class.selected-deck]="selectedDeck.deck_id==deck.deck_id"></div>
+      <input [(ngModel)]="deck.name" class="deck-label" maxlength="20" />
     </div>
+  }
 </div>
